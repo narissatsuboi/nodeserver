@@ -1,22 +1,38 @@
-// NPM 
-// npm - global command, comes with node
-// npm --version
+// Event loop
 
-// local dependency - use package on certain project only
-// npm i <packageName>
+// Read file async example 
+// const { readFile } = require('fs')
+// console.log('started a first task')
+// readFile('./content/first.txt', 'utf-8', (err, result)=> {
+//     if (err) {
+//         console.log(err);
+//         return
+//     }
+//     console.log(result);
+//     console.log('completed first task');
+// })
+// console.log('starting next task');
 
-// global dependency - use it on any project 
-// npm install -g <packageName> 
-// sudo npm install -g <packageName> (linux)
+// Set Timeout example 
+// // start os process
+// console.log('first')
+// // cb function
+// setTimeout(()=> {console.log('second')},0), console.log('third')
+// // completed and exited os process 
 
-// package.json - manifest file (stores important info about project/package)
-// method 1 - manual approach (create package.json in the root, create properties etc)
-// method 2 - npm init (step by step, press enter to skip)
-// method 3 - npm init -y (download everything by default)
+// Set Interval example
+// setInterval(()=> {console.log('hello world')}, 2000), console.log('i will run first')
+// // process stays alive unless
+// // kill process with ctrol c or unexpected error
 
-// use external package, save to var 
-const _ = require('lodash')
-const items = [1, [2, [3, [4]]]]
+// Server example
+// const http = require('http')
 
-const newItems = _.flattenDeep(items)
-console.log(newItems);
+// const server = http.createServer((req, res)=>{
+//     console.log('request event')
+//     res.end('hello world')
+// })
+
+// server.listen(5000, ()=>{
+//     console.log('server listening on port: 5000')
+// })
