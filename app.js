@@ -1,38 +1,15 @@
-// Event loop
+const EventEmitter = require('events');
 
-// Read file async example 
-// const { readFile } = require('fs')
-// console.log('started a first task')
-// readFile('./content/first.txt', 'utf-8', (err, result)=> {
-//     if (err) {
-//         console.log(err);
-//         return
-//     }
-//     console.log(result);
-//     console.log('completed first task');
-// })
-// console.log('starting next task');
+const customEmitter = new EventEmitter();
 
-// Set Timeout example 
-// // start os process
-// console.log('first')
-// // cb function
-// setTimeout(()=> {console.log('second')},0), console.log('third')
-// // completed and exited os process 
+// (1) listen for event 
+// name of event , callback function 
+customEmitter.on('response', (name, id)=> {
+    console.log(`data recieved user ${name} with age ${id}`);
+})  
+customEmitter.on('response', ()=> {
+    console.log('more data recieved');
+})  
 
-// Set Interval example
-// setInterval(()=> {console.log('hello world')}, 2000), console.log('i will run first')
-// // process stays alive unless
-// // kill process with ctrol c or unexpected error
-
-// Server example
-// const http = require('http')
-
-// const server = http.createServer((req, res)=>{
-//     console.log('request event')
-//     res.end('hello world')
-// })
-
-// server.listen(5000, ()=>{
-//     console.log('server listening on port: 5000')
-// })
+// (2) emit the event
+customEmitter.emit('response', 'nars', 28);
